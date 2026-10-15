@@ -1,0 +1,73 @@
+---
+description: Ordem de leitura e regras de construção das estruturas deste repositório
+alwaysApply: true
+---
+
+# Projects Structures — Instruction
+
+Este repositório contém **estruturas** (esqueletos de organização de projeto), não aplicações. Antes de escrever qualquer coisa, leia os arquivos abaixo **nesta ordem**.
+
+## 1. Ordem de leitura obrigatória
+
+| # | Arquivo | Para quê |
+| --- | --- | --- |
+| 1 | [`AGENTS.md`](mdc:AGENTS.md) | **Regras de criação/manutenção de estruturas.** É a fonte da verdade. Leia por completo antes de agir. |
+| 2 | [`README.md`](mdc:README.md) | O que é o projeto, quais estruturas existem e qual diretório pertence a cada uma. |
+| 3 | `structures/<Área>/<Estrutura>/README.md` | Só se a estrutura **já existir** — formato, convenções e quando usar. |
+| 4 | `structures/<Área>/<Estrutura>/INSTALL.md` | Só se a estrutura **já existir** — o que configurar e o que não alterar. |
+| 5 | `structures/<Área>/<Estrutura>/AGENTS.md` | Só se a estrutura **já existir** — regras específicas daquela estrutura. |
+
+Se o passo 3–5 não existir, a estrutura **ainda está em definição**: não a implemente (ver seção 4).
+
+## 2. Mapa do repositório
+
+```
+AGENTS.md                  # regras de criação de estruturas (ler primeiro)
+README.md                  # índice geral
+LICENSE
+.cursor/rules/instructs.mdc # este arquivo
+```
+
+Sempre confirme a árvore real com um `ls`/glob antes de assumir que um caminho existe.
+
+## 3. Nomenclatura (não inventar)
+
+Pasta: `<Prefixo>-<Variante>` em PascalCase com hífen.
+
+| Termo | Significado |
+| --- | --- |
+| `Macro` | Monolito |
+| `Micro` | Microsserviços |
+| `Multi` | Várias aplicações por finalidade/responsabilidade |
+| `Reusable` | Consome pacotes internos reutilizáveis |
+
+Detalhes e formato completo: seção 3 do `AGENTS.md`.
+
+## 4. Antes de construir — checagem obrigatória
+
+1. **Leia `AGENTS.md` inteiro.** Ele define o conteúdo obrigatório, o formato do `README.md` e do `INSTALL.md`, o Docker e o checklist.
+2. **Verifique se a estrutura já existe** (`ls structures/<Área>/`).
+3. Se o pedido for criar uma estrutura nova, **confirme com o usuário** antes — não invente estruturas.
+4. **Estado atual:** as pastas em `structures/` existem, mas **estão vazias**. Elas estão **em definição**.
+
+> ⛔ **Não implemente o conteúdo das estruturas** (README, INSTALL, esqueleto, Docker) sem pedido explícito do usuário. Nesta fase o trabalho é alinhar o que cada estrutura é.
+
+## 5. Ao construir uma estrutura
+
+Siga o checklist da seção 10 do `AGENTS.md`. Resumo do conteúdo obrigatório:
+
+- `README.md` — no formato da seção 7 do `AGENTS.md`;
+- `INSTALL.md` — o que configurar/não configurar, nomes, diretórios, links (seção 6);
+- `AGENTS.md` próprio — regras de IA daquela estrutura (formato na seção 8);
+- Esqueleto de diretórios — comentado no `README.md`;
+- `Dockerfile` + `.dockerignore` + `.env.example` (seção 5) — **sem** `compose.yaml`;
+- `README.md` raiz atualizado (tabela-índice, seção e "Árvore atual").
+
+## 6. Convenções gerais
+
+- Documentação em **português**; nomes de arquivos/pastas de código em **inglês**, minúsculo e `kebab-case`.
+- Estruturas não contêm **código de negócio** — apenas esqueleto, convenções e exemplos genéricos.
+- Altere **uma estrutura por vez** e explique o que mudou.
+- Não duplique conteúdo: referencie outras estruturas por link.
+- Sem dependências, stacks ou frameworks específicos sem alinhamento prévio.
+- Em caso de dúvida ou informação faltando: **pergunte**, não assuma.
