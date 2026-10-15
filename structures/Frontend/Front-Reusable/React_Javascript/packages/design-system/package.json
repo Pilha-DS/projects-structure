@@ -1,0 +1,22 @@
+{
+  "name": "@front-reusable/design-system",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tokens, tema, CSS e componentes compartilhados entre os apps.",
+  "exports": {
+    ".": "./src/index.js",
+    "./tokens.css": "./src/tokens.css",
+    "./global.css": "./src/global.css"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0"
+  },
+  "devDependencies": {
+    "react": "^19.0.0",
+    "vitest": "^2.1.8"
+  }
+}

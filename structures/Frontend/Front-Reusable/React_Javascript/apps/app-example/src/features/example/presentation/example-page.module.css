@@ -1,0 +1,13 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: var(--color-surface);
+}
+
+.title {
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-xl);
+}

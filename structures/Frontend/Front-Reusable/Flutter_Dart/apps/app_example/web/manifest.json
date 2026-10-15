@@ -1,0 +1,11 @@
+{
+  "name": "app_example",
+  "short_name": "app_example",
+  "start_url": ".",
+  "display": "standalone",
+  "background_color": "#FFFFFF",
+  "theme_color": "#3F51B5",
+  "description": "App Flutter Web de exemplo da estrutura Flutter_Dart",
+  "orientation": "portrait-primary",
+  "prefer_related_applications": false
+}

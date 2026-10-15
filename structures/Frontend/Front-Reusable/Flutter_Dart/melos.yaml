@@ -1,0 +1,43 @@
+name: front_reusable_flutter
+
+packages:
+  - apps/**
+  - packages/**
+
+command:
+  bootstrap:
+    runPubGetInParallel: true
+    usePubspecOverrides: true
+  version:
+    branch: main
+    message: "chore(release): %s"
+    linkToCommits: true
+
+scripts:
+  build:web:
+    description: Build de produção (web) do app.
+    run: flutter build web --release
+    packageFilters:
+      scope: app_example
+
+  analyze:
+    description: Análise estática de todos os packages.
+    run: dart analyze .
+    packageFilters:
+      dirExists: lib
+
+  # Separado porque packages Dart puros usam `dart test`;
+  # packages que dependem do Flutter usam `flutter test`.
+  test:flutter:
+    description: Roda os testes dos packages Flutter.
+    run: flutter test
+    packageFilters:
+      flutter: true
+      dirExists: test
+
+  test:dart:
+    description: Roda os testes dos packages Dart puros.
+    run: dart test
+    packageFilters:
+      flutter: false
+      dirExists: test

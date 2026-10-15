@@ -13,9 +13,9 @@ Este repositório contém **estruturas** (esqueletos de organização de projeto
 | --- | --- | --- |
 | 1 | [`AGENTS.md`](mdc:AGENTS.md) | **Regras de criação/manutenção de estruturas.** É a fonte da verdade. Leia por completo antes de agir. |
 | 2 | [`README.md`](mdc:README.md) | O que é o projeto, quais estruturas existem e qual diretório pertence a cada uma. |
-| 3 | `structures/<Área>/<Estrutura>/README.md` | Só se a estrutura **já existir** — formato, convenções e quando usar. |
-| 4 | `structures/<Área>/<Estrutura>/INSTALL.md` | Só se a estrutura **já existir** — o que configurar e o que não alterar. |
-| 5 | `structures/<Área>/<Estrutura>/AGENTS.md` | Só se a estrutura **já existir** — regras específicas daquela estrutura. |
+| 3 | `structures/<Área>/<Estrutura>/<Framework>_<Linguagem>/README.md` | Só se a estrutura **já existir** — formato, convenções e quando usar. |
+| 4 | `.../<Framework>_<Linguagem>/INSTALL.md` | Só se a estrutura **já existir** — o que configurar e o que não alterar. |
+| 5 | `.../<Framework>_<Linguagem>/AGENTS.md` | Só se a estrutura **já existir** — regras específicas daquela estrutura. |
 
 Se o passo 3–5 não existir, a estrutura **ainda está em definição**: não a implemente (ver seção 4).
 
@@ -26,6 +26,20 @@ AGENTS.md                  # regras de criação de estruturas (ler primeiro)
 README.md                  # índice geral
 LICENSE
 .cursor/rules/instructs.mdc # este arquivo
+structures/
+├── Frontend/
+│   ├── Front-Macro/       # Frontend comum
+│   └── Front-Reusable/    # Frontend com package reutilizável
+│       ├── Flutter_Dart/        # ✅ construída
+│       └── React_Javascript/    # ✅ construída
+├── API/
+│   ├── API-Macro/         # API comum (monolito)
+│   │   ├── FastAPI_Python/
+│   │   └── SpringBoot_Java/
+│   ├── API-Micro/         # API com microsserviços
+│   ├── API-Multi-Macro/   # Multi-API, cada uma monolito
+│   └── API-Multi-Micro/   # Multi-API, cada uma em microsserviços
+└── MVC/                   # padrão transversal
 ```
 
 Sempre confirme a árvore real com um `ls`/glob antes de assumir que um caminho existe.
@@ -41,6 +55,8 @@ Pasta: `<Prefixo>-<Variante>` em PascalCase com hífen.
 | `Multi` | Várias aplicações por finalidade/responsabilidade |
 | `Reusable` | Consome pacotes internos reutilizáveis |
 
+O nível mais interno é a **tecnologia**: `<Framework>_<Linguagem>` (ex.: `Flutter_Dart`, `FastAPI_Python`).
+
 Detalhes e formato completo: seção 3 do `AGENTS.md`.
 
 ## 4. Antes de construir — checagem obrigatória
@@ -48,7 +64,7 @@ Detalhes e formato completo: seção 3 do `AGENTS.md`.
 1. **Leia `AGENTS.md` inteiro.** Ele define o conteúdo obrigatório, o formato do `README.md` e do `INSTALL.md`, o Docker e o checklist.
 2. **Verifique se a estrutura já existe** (`ls structures/<Área>/`).
 3. Se o pedido for criar uma estrutura nova, **confirme com o usuário** antes — não invente estruturas.
-4. **Estado atual:** as pastas em `structures/` existem, mas **estão vazias**. Elas estão **em definição**.
+4. **Estado atual:** quase todas as estruturas estão **em definição** e vazias. As **construídas** são `structures/Frontend/Front-Reusable/Flutter_Dart` e `.../React_Javascript`.
 
 > ⛔ **Não implemente o conteúdo das estruturas** (README, INSTALL, esqueleto, Docker) sem pedido explícito do usuário. Nesta fase o trabalho é alinhar o que cada estrutura é.
 
@@ -65,7 +81,7 @@ Siga o checklist da seção 10 do `AGENTS.md`. Resumo do conteúdo obrigatório:
 
 ## 6. Convenções gerais
 
-- Documentação em **português**; nomes de arquivos/pastas de código em **inglês**, minúsculo e `kebab-case`.
+- Documentação em **português**; nomes de arquivos/pastas de código em **inglês** e `kebab-case` — exceto dentro do esqueleto da stack, que segue a convenção da ferramenta (Dart: `snake_case`; Python: `snake_case`; JS/TS: `kebab-case`).
 - Estruturas não contêm **código de negócio** — apenas esqueleto, convenções e exemplos genéricos.
 - Altere **uma estrutura por vez** e explique o que mudou.
 - Não duplique conteúdo: referencie outras estruturas por link.

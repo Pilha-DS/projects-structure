@@ -1,0 +1,25 @@
+# ---- Dart / Flutter ----
+.dart_tool/
+.packages
+build/
+*.iml
+
+# ---- Melos (gerados localmente) ----
+.melos_tool/
+.melos.version
+pubspec_overrides.yaml
+
+# ---- Lock files ----
+# Apps versionam o lock; packages (bibliotecas) não.
+packages/**/pubspec.lock
+
+# ---- Ambiente ----
+.env
+*.env
+!.env.example
+
+# ---- Editores / SO ----
+.idea/
+.vscode/
+*.swp
+.DS_Store

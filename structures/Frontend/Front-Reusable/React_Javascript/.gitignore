@@ -1,0 +1,28 @@
+# ---- Node ----
+node_modules/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# ---- Vite ----
+.vite/
+*.local
+
+# ---- Logs ----
+npm-debug.log*
+pnpm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ---- Ambiente ----
+.env
+.env.*
+!.env.example
+
+# ---- Editores / SO ----
+.idea/
+.vscode/
+*.swp
+.DS_Store

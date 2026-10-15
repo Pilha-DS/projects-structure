@@ -1,0 +1,8 @@
+# Análise estática compartilhada por todo o workspace.
+# Cada package pode sobrescrever com o seu próprio analysis_options.yaml.
+analyzer:
+  exclude:
+    - "**/*.g.dart"
+    - "**/*.freezed.dart"
+    - "**/*.gr.dart"
+    - "**/*.mocks.dart"

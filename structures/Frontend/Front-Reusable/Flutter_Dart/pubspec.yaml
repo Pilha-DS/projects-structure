@@ -1,0 +1,11 @@
+# Raiz do workspace do monorepo.
+# Não é um package Dart publicável: existe só para amarrar apps/ e packages/.
+name: front_reusable_flutter
+description: Workspace raiz do monorepo Flutter Web (apps + packages internos).
+publish_to: none
+
+environment:
+  sdk: ^3.6.0
+
+dev_dependencies:
+  melos: ^6.0.0

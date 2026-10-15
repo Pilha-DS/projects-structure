@@ -1,0 +1,19 @@
+{
+  "name": "@front-reusable/network",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Cliente HTTP, interceptors e tipos de transporte da camada de dados.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "dependencies": {
+    "@front-reusable/core": "workspace:*"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  }
+}

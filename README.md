@@ -31,14 +31,16 @@ Existem várias formas de organizar um software, e cada uma atende melhor a um t
 
 > 🧩 Aqui cada item é uma **estrutura** — o esqueleto de *uma parte* do software. Para como essas partes se combinam em um projeto inteiro, veja [Estruturas de projetos](#estruturas-de-projetos).
 
-| Grupo | Estrutura | Diretório |
-| --- | --- | --- |
-| Frontend | [Frontend comum](#frontend-comum) | [`structures/Frontend/Front-Macro`](structures/Frontend/Front-Macro) |
-| Frontend | [Frontend com package reutilizável](#frontend-com-package-reutilizável) | [`structures/Frontend/Front-Reusable`](structures/Frontend/Front-Reusable) |
-| API | [API comum (sem microsserviços)](#api-comum-sem-microsserviços) | [`structures/API/API-Macro`](structures/API/API-Macro) |
-| API | [API com microsserviços](#api-com-microsserviços) | [`structures/API/API-Micro`](structures/API/API-Micro) |
-| API | [Multi-API](#multi-api) | [`structures/API/API-Multi-Macro`](structures/API/API-Multi-Macro) · [`structures/API/API-Multi-Micro`](structures/API/API-Multi-Micro) |
-| Padrão | [MVC](#mvc) | [`structures/MVC`](structures/MVC) |
+| Grupo | Estrutura | Diretório | Tecnologias |
+| --- | --- | --- | --- |
+| Frontend | [Frontend comum](#frontend-comum) | [`structures/Frontend/Front-Macro`](structures/Frontend/Front-Macro) | — |
+| Frontend | [Frontend com package reutilizável](#frontend-com-package-reutilizável) | [`structures/Frontend/Front-Reusable`](structures/Frontend/Front-Reusable) | `Flutter_Dart` · `React_Javascript` |
+| API | [API comum (sem microsserviços)](#api-comum-sem-microsserviços) | [`structures/API/API-Macro`](structures/API/API-Macro) | `FastAPI_Python` · `SpringBoot_Java` |
+| API | [API com microsserviços](#api-com-microsserviços) | [`structures/API/API-Micro`](structures/API/API-Micro) | — |
+| API | [Multi-API](#multi-api) | [`structures/API/API-Multi-Macro`](structures/API/API-Multi-Macro) · [`structures/API/API-Multi-Micro`](structures/API/API-Multi-Micro) | — |
+| Padrão | [MVC](#mvc) | [`structures/MVC`](structures/MVC) | — |
+
+> 🔧 **Tecnologias:** cada estrutura pode ter uma **implementação concreta por stack**, numa subpasta própria (`<Framework>_<Linguagem>`). Enquanto não existir, a estrutura está **em definição**.
 
 ---
 
@@ -98,6 +100,13 @@ Aplicação de interface que consome **pacotes internos reutilizáveis** (design
 - Quando se quer padronizar design e comportamento entre produtos;
 - Quando o time já tem maturidade em monorepo/pacotes internos.
 
+**Tecnologias**
+
+| Implementação | Diretório | Status |
+| --- | --- | --- |
+| Flutter (Web) + Dart | [`structures/Frontend/Front-Reusable/Flutter_Dart`](structures/Frontend/Front-Reusable/Flutter_Dart) | ✅ construída |
+| React + JavaScript | [`structures/Frontend/Front-Reusable/React_Javascript`](structures/Frontend/Front-Reusable/React_Javascript) | ✅ construída |
+
 ---
 
 ### API
@@ -129,6 +138,13 @@ Aplicação **server-side única** (monolito) exposta como serviço, sem interfa
 - Quando o produto é o próprio serviço/integração;
 - Como backend de um ou mais fronts e/ou aplicativos;
 - Quando o domínio ainda é pequeno ou o time é enxuto.
+
+**Tecnologias**
+
+| Implementação | Diretório | Status |
+| --- | --- | --- |
+| FastAPI + Python | [`structures/API/API-Macro/FastAPI_Python`](structures/API/API-Macro/FastAPI_Python) | 🚧 em definição |
+| Spring Boot + Java | [`structures/API/API-Macro/SpringBoot_Java`](structures/API/API-Macro/SpringBoot_Java) | 🚧 em definição |
 
 #### API com microsserviços
 
@@ -360,7 +376,9 @@ Cada estrutura terá **três arquivos de documentação**, com papéis distintos
 
 🚧 **Em desenvolvimento.**
 
-Estruturas e regras estão sendo definidas e serão implementadas aos poucos. Os diretórios já existem em `structures/`, mas ainda estão vazios. Este README serve como **índice e referência** do que está planejado.
+Estruturas e regras estão sendo definidas e serão implementadas aos poucos. Os diretórios já existem em `structures/`, mas a maioria ainda está vazia. Este README serve como **índice e referência** do que está planejado.
+
+As primeiras estruturas concretas são **[`Flutter_Dart`](structures/Frontend/Front-Reusable/Flutter_Dart)** e **[`React_Javascript`](structures/Frontend/Front-Reusable/React_Javascript)** (Frontend com package reutilizável).
 
 As **estruturas de projetos** (como as peças se combinam) também estão em definição e ainda não têm diretórios próprios.
 
@@ -369,14 +387,18 @@ As **estruturas de projetos** (como as peças se combinam) também estão em def
 ```
 structures/
 ├── API/
-│   ├── API-Macro          # API comum (monolito)
-│   ├── API-Micro          # API com microsserviços
-│   ├── API-Multi-Macro    # Multi-API, cada uma monolito
-│   └── API-Multi-Micro    # Multi-API, cada uma em microsserviços
+│   ├── API-Macro/             # API comum (monolito)
+│   │   ├── FastAPI_Python/    # 🚧 em definição
+│   │   └── SpringBoot_Java/   # 🚧 em definição
+│   ├── API-Micro/             # API com microsserviços
+│   ├── API-Multi-Macro/       # Multi-API, cada uma monolito
+│   └── API-Multi-Micro/       # Multi-API, cada uma em microsserviços
 ├── Frontend/
-│   ├── Front-Macro        # Frontend comum
-│   └── Front-Reusable     # Frontend com package reutilizável
-└── MVC/                   # Padrão MVC
+│   ├── Front-Macro/           # Frontend comum
+│   └── Front-Reusable/        # Frontend com package reutilizável
+│       ├── Flutter_Dart/      # ✅ construída
+│       └── React_Javascript/  # ✅ construída
+└── MVC/                       # Padrão MVC
 ```
 
 ## Contribuindo

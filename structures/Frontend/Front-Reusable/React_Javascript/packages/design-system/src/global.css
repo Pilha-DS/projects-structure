@@ -1,0 +1,21 @@
+/**
+ * Estilos globais mínimos. Importe uma vez, no bootstrap do app:
+ *
+ *   import '@front-reusable/design-system/tokens.css';
+ *   import '@front-reusable/design-system/global.css';
+ */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: var(--color-surface);
+  color: var(--color-text);
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  -webkit-font-smoothing: antialiased;
+}

@@ -21,17 +21,26 @@ Toda estrutura vive dentro de `structures/`, agrupada pela **área** a que perte
 
 ```
 structures/
-├── Frontend/     # estruturas de interface
-├── API/          # estruturas de servidor
-└── MVC/          # padrões transversais
+├── Frontend/            # estruturas de interface
+├── API/                 # estruturas de servidor
+└── MVC/                 # padrões transversais
 ```
+
+Cada estrutura pode conter **implementações por tecnologia**, em subpastas próprias:
+
+```
+structures/<Área>/<Estrutura>/<Framework>_<Linguagem>/
+```
+
+Exemplos: `structures/Frontend/Front-Reusable/Flutter_Dart`, `structures/API/API-Macro/FastAPI_Python`.
 
 Regras:
 
 - Cada estrutura é **uma pasta própria** dentro da sua área;
 - Não criar estruturas na raiz do repositório;
 - Não misturar estruturas de áreas diferentes na mesma pasta;
-- O nome da área é o **domínio** da estrutura (`Frontend`, `API`), não a tecnologia.
+- O nome da área é o **domínio** da estrutura (`Frontend`, `API`), não a tecnologia;
+- A **tecnologia** só aparece no nível mais interno (`<Framework>_<Linguagem>`), nunca na área.
 
 ## 3. Nomenclatura
 
@@ -59,6 +68,29 @@ Variantes em uso (mantenha este vocabulário consistente):
 
 Combinadores podem ser empilhados, do mais amplo ao mais específico: `API-Multi-Micro` = API (área) + Multi (várias por finalidade) + Micro (cada uma em microsserviços).
 
+**Nível de tecnologia**
+
+Nomes de estruturas usam **PascalCase com hífen** e **nada de underscore**. Já a pasta de tecnologia fica no nível mais interno e usa:
+
+```
+<Framework>_<Linguagem>
+```
+
+Exemplos: `Flutter_Dart`, `React_Javascript`, `FastAPI_Python`, `SpringBoot_Java`.
+
+- **Framework** e **Linguagem** em PascalCase, separados por **um** underscore;
+- Só o nível de tecnologia usa underscore — isso é uma **exceção deliberada** à regra do nível acima.
+
+**Exceção dentro do esqueleto (ferramentas)**
+
+Dentro da pasta de tecnologia, o esqueleto segue a convenção da ferramenta, não a do repositório:
+
+- Dart/Flutter: packages usam **`snake_case`** (exigência do `pub`) — ex.: `design_system`;
+- Python: módulos usam **`snake_case`** — ex.: `use_cases`;
+- JavaScript/TypeScript: pastas/arquivos em **`kebab-case`**.
+
+Ou seja: a regra de `kebab-case` vale **fora** do esqueleto (documentação, pasta da estrutura, pasta de tecnologia). Dentro dele, vale a convenção da stack.
+
 ## 4. Conteúdo obrigatório de uma estrutura
 
 Ao criar a pasta de uma estrutura, ela deve conter, no mínimo:
@@ -78,9 +110,9 @@ Ao criar a pasta de uma estrutura, ela deve conter, no mínimo:
 Regras:
 
 - **Não** colocar código de aplicação real (domínio, features) — apenas o esqueleto;
-- Nomes de pastas/arquivos em **inglês**, minúsculo e `kebab-case` (ex.: `src/`, `app/`, `use-cases/`);
+- Nomes de pastas/arquivos em **inglês** e `kebab-case` (ex.: `src/`, `app/`, `use-cases/`) — **exceto** dentro do esqueleto de uma stack, que segue a convenção da ferramenta (ver seção 3);
 - Arquivos de documentação podem ser em **português**;
-- Se a estrutura tiver variantes com regras próprias, crie um `AGENTS.md` em cada uma.
+- Se a estrutura tiver variantes com regras próprias, crie um `AGENTS.md` em cada uma (inclusive em cada tecnologia).
 
 ## 5. Docker pré-configurado
 
@@ -301,7 +333,7 @@ Ao **criar uma estrutura**, o agente **não deve**:
 
 - [ ] Confirmar com o usuário que a estrutura deve mesmo ser criada;
 - [ ] Definir **área** (`Frontend`, `API`, ...) e **nome** seguindo a seção 3;
-- [ ] Criar a pasta em `structures/<Área>/<Prefixo>-<Variante>/`;
+- [ ] Criar a pasta em `structures/<Área>/<Prefixo>-<Variante>/<Framework>_<Linguagem>/`;
 - [ ] Escrever o `README.md` no formato da seção 7;
 - [ ] Escrever o `INSTALL.md` no formato da seção 6 (o que configurar, o que não alterar, links);
 - [ ] Criar o esqueleto de diretórios (comentado no README);
@@ -312,6 +344,10 @@ Ao **criar uma estrutura**, o agente **não deve**:
 
 ## 11. Estado atual
 
-⚠️ As estruturas estão **em definição**. As pastas já existem em `structures/`, mas o conteúdo (README, INSTALL, esqueleto, AGENTS) ainda será desenvolvido.
+⚠️ A maioria das estruturas está **em definição**. As pastas existem em `structures/`, mas o conteúdo (README, INSTALL, esqueleto, AGENTS) ainda será desenvolvido.
 
-**Não implementar** as estruturas até que o usuário peça explicitamente. Nesta fase, o trabalho é alinhar **o que cada estrutura é** e **como ela deve ser usada**.
+As estruturas **construídas** até agora são:
+- `structures/Frontend/Front-Reusable/Flutter_Dart`
+- `structures/Frontend/Front-Reusable/React_Javascript`
+
+**Não implementar** as demais estruturas até que o usuário peça explicitamente. Nesta fase, o trabalho é alinhar **o que cada estrutura é** e **como ela deve ser usada**.

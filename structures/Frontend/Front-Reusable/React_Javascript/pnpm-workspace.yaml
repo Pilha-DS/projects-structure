@@ -1,0 +1,5 @@
+# Define os workspaces do monorepo.
+# Cada app e cada package interno é resolvido e linkado pelo pnpm.
+packages:
+  - "apps/*"
+  - "packages/*"

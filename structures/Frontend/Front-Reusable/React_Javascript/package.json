@@ -1,0 +1,28 @@
+{
+  "name": "front-reusable-react",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Monorepo React (apps + packages internos) da estrutura Front-Reusable.",
+  "type": "module",
+  "packageManager": "pnpm@9.15.0",
+  "engines": {
+    "node": ">=20.19"
+  },
+  "scripts": {
+    "dev": "pnpm --filter app-example dev",
+    "build": "pnpm --filter app-example build",
+    "preview": "pnpm --filter app-example preview",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "test": "pnpm -r test",
+    "clean": "rm -rf node_modules apps/*/node_modules packages/*/node_modules apps/*/dist"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.17.0",
+    "eslint": "^9.17.0",
+    "eslint-plugin-react": "^7.37.0",
+    "eslint-plugin-react-hooks": "^5.1.0",
+    "globals": "^15.14.0",
+    "prettier": "^3.4.0"
+  }
+}

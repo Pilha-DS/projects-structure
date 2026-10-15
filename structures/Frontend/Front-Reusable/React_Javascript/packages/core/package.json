@@ -1,0 +1,16 @@
+{
+  "name": "@front-reusable/core",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Tipos, erros, utilitários e formatadores compartilhados entre apps e packages.",
+  "exports": {
+    ".": "./src/index.js"
+  },
+  "scripts": {
+    "test": "vitest run"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  }
+}
